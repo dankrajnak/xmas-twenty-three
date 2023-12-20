@@ -41,28 +41,40 @@
       1000,
   );
 
-  $: dotCounts = [
-    new Array(weeks).fill("weeks"),
-    new Array(days).fill("days"),
-    new Array(hours).fill("hours"),
-    new Array(minutes).fill("minutes"),
-    new Array(seconds).fill("seconds"),
-  ] as ("seconds" | "minutes" | "hours" | "days" | "weeks")[][];
+  $: dotCounts = (
+    diff > 0
+      ? [
+          new Array(weeks).fill("weeks"),
+          new Array(days).fill("days"),
+          new Array(hours).fill("hours"),
+          new Array(minutes).fill("minutes"),
+          new Array(seconds).fill("seconds"),
+        ]
+      : []
+  ) as ("seconds" | "minutes" | "hours" | "days" | "weeks")[][];
 </script>
 
-<div class="grid grid-cols-4 mx-auto gap-4 gap-y-14 w-80 my-12">
-  {#each dotCounts as unit}
-    {#each unit as dot, dotI}
-      <div
-        style={`color: ${config[dot].color}`}
-        class="flex flex-col items-center justify-center"
-        transition:fade={{ duration: 300, easing: cubicIn }}
-      >
-        <div class=" text-8xl text-center font-thin" style="line-height: 0;">
-          *
+{#if diff < 0}
+  <div class="text-center w-full h-screen flex justify-center items-center">
+    <h1 class="text-4xl text-white font-extralight tracking-tight">
+      Merry Christmas
+    </h1>
+  </div>
+{:else}
+  <div class="grid grid-cols-4 mx-auto gap-4 gap-y-14 w-80 my-12">
+    {#each dotCounts as unit}
+      {#each unit as dot, dotI}
+        <div
+          style={`color: ${config[dot].color}`}
+          class="flex flex-col items-center justify-center"
+          transition:fade={{ duration: 300, easing: cubicIn }}
+        >
+          <div class=" text-8xl text-center font-thin" style="line-height: 0;">
+            *
+          </div>
+          <span>{dotI + 1}</span>
         </div>
-        <span>{dotI + 1}</span>
-      </div>
+      {/each}
     {/each}
-  {/each}
-</div>
+  </div>
+{/if}
