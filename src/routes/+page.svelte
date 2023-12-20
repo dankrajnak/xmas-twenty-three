@@ -7,7 +7,7 @@
   import HotDog from "svelte-material-icons/FoodHotDog.svelte";
   import Cups from "svelte-material-icons/FoodTurkey.svelte";
 
-  const date = new Date("01/02/2024 17:00:00");
+  const date = new Date("01/04/2024 20:00:00");
   let now = new Date();
   setInterval(() => {
     now = new Date();
