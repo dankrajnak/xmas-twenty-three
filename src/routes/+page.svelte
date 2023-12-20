@@ -58,7 +58,7 @@
   ] as ("seconds" | "minutes" | "hours" | "days" | "weeks")[][];
 </script>
 
-<div class="flex flex-wrap items-center gap-12 mx-auto my-12 w-96">
+<div class="flex flex-wrap items-center gap-12 mx-auto my-12 w-80">
   {#each dotCounts as unit}
     {#each unit as dot, dotI}
       <div
