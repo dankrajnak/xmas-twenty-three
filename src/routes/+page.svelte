@@ -1,12 +1,6 @@
 <script lang="ts">
   import { fade } from "svelte/transition";
   import { cubicIn } from "svelte/easing";
-  import FoodApple from "svelte-material-icons/FoodApple.svelte";
-  import Hamburger from "svelte-material-icons/Hamburger.svelte";
-  import Noodles from "svelte-material-icons/Noodles.svelte";
-  import HotDog from "svelte-material-icons/FoodHotDog.svelte";
-  import Cups from "svelte-material-icons/FoodTurkey.svelte";
-
   const date = new Date("01/04/2024 20:00:00");
   let now = new Date();
   setInterval(() => {
@@ -20,8 +14,6 @@
     days: { color: "#BFA454", icon: 129368 },
     weeks: { color: "#BF6854", icon: 129365 },
   } as const;
-
-  const Thing = FoodApple;
 
   $: diff = date.getTime() - now.getTime();
 
@@ -74,7 +66,6 @@
             style="line-height: 0;"
           >
             *
-            <!-- {@html "&#" + config[dot].icon + ";"} -->
           </div>
           <span>{dotI + 1}</span>
         </div>
