@@ -50,25 +50,18 @@
   ] as ("seconds" | "minutes" | "hours" | "days" | "weeks")[][];
 </script>
 
-<div class="flex flex-wrap items-center mx-auto my-12 w-80">
+<div class="grid grid-cols-4 mx-auto gap-4 gap-y-14 w-80 my-12">
   {#each dotCounts as unit}
     {#each unit as dot, dotI}
       <div
-        class="flex flex-col items-center justify-center w-1/4 mb-14"
+        style={`color: ${config[dot].color}`}
+        class="flex flex-col items-center justify-center"
         transition:fade={{ duration: 300, easing: cubicIn }}
       >
-        <div
-          class="flex flex-col text-center"
-          style={`color: ${config[dot].color}`}
-        >
-          <div
-            class=" text-8xl text-center font-thin leading-"
-            style="line-height: 0;"
-          >
-            *
-          </div>
-          <span>{dotI + 1}</span>
+        <div class=" text-8xl text-center font-thin" style="line-height: 0;">
+          *
         </div>
+        <span>{dotI + 1}</span>
       </div>
     {/each}
   {/each}
